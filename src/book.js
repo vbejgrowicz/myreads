@@ -3,26 +3,14 @@
 import React from 'react';
 import BookShelfChanger from './book-shelf-changer';
 import { getAll } from './BooksAPI';
+// import SearchPage from './search-page';
 
-class Book extends React.Component {
-
-constructor() {
-  super();
-  this.state = {
-    books:[]
-  };
-}
-
-componentDidMount() {
-getAll().then((books) => {
-  this.setState({books});
-});
-}
+class DisplayBook extends React.Component {
 
   render() {
     return (
       <ol className="books-grid">
-      {this.state.books.filter(book => (book.shelf === this.props.shelf)).map(book => {
+      {this.props.displayBooks.map(book => {
         return(
           <li key={book.id}>
             <div className="book">
@@ -31,7 +19,14 @@ getAll().then((books) => {
                 <BookShelfChanger />
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.authors}</div>
+              <div className="book-authors">{book.authors.map(author => {
+                return(
+                  <div>
+                  {author}
+                  </div>
+                );
+              })}
+              </div>
             </div>
           </li>
         );
@@ -41,4 +36,4 @@ getAll().then((books) => {
     }
 }
 
-export default Book;
+export default DisplayBook;

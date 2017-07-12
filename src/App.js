@@ -1,15 +1,14 @@
 /* jshint esversion:6 */
 import React from 'react';
 import { Route } from 'react-router-dom';
-// import { get, getAll, update, search} from './BooksAPI';
+import { search} from './BooksAPI';
 import './App.css';
 
 import ListBooks from './list-books';
 import SearchPage from './search-page';
 
-// window.getAll = getAll;
-// window.get = get;
-// window.search = search;
+
+//window.search = search;
 
 class BooksApp extends React.Component {
 
