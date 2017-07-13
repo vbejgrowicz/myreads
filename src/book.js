@@ -2,12 +2,13 @@
 
 import React from 'react';
 import BookShelfChanger from './book-shelf-changer';
-import { getAll } from './BooksAPI';
+
 // import SearchPage from './search-page';
 
 class DisplayBook extends React.Component {
 
   render() {
+
     return (
       <ol className="books-grid">
       {this.props.displayBooks.map(book => {
@@ -19,7 +20,7 @@ class DisplayBook extends React.Component {
                 <BookShelfChanger />
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.authors.map(author => {
+              <div className="book-authors">{book.authors && book.authors.map(author => {
                 return(
                   <div>
                   {author}
