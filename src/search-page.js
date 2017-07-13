@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { search } from  './BooksAPI';
+import { search, getAll } from  './BooksAPI';
 import DisplayBook from './book';
 
 class SearchPage extends React.Component {
@@ -11,7 +11,8 @@ class SearchPage extends React.Component {
     super();
     this.state = {
       value:'',
-      books:[]
+      books:[],
+      booksOnShelf: []
     };
   }
 
@@ -21,18 +22,24 @@ class SearchPage extends React.Component {
       this.setState({books});
     });
   }
+  componentDidMount() {
+  getAll().then((booksOnShelf) => {
+    this.setState({booksOnShelf});
+  });
+  }
 
   checkArray() {
   if (Array.isArray(this.state.books)){
     return(
       <div className="search-books-results">
-        <DisplayBook displayBooks={this.state.books}/>
+        <DisplayBook mode="search" displayBooks={this.state.books} currentShelf={this.state.booksOnShelf}/>
       </div>
     );
   }
 }
 
   render() {
+
     return (
         <div className="search-books">
           <div className="search-books-bar">

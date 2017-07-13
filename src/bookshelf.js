@@ -24,7 +24,7 @@ class Bookshelf extends React.Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.display}</h2>
         <div className="bookshelf-books">
-          <DisplayBook shelf={this.props.shelf} displayBooks={this.state.books.filter(book => (book.shelf === this.props.shelf))} />
+          <DisplayBook mode="bookshelf" displayBooks={this.state.books.filter(book => (book.shelf === this.props.shelf))} />
         </div>
       </div>
     );
