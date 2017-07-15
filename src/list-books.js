@@ -13,9 +13,9 @@ class ListBooks extends React.Component {
       <div className="list-books">
         <Title />
         <div className="list-books-content">
-          <Bookshelf display="Currently Reading "shelf="currentlyReading"/>
-          <Bookshelf display="Want to Read" shelf= "wantToRead"/>
-          <Bookshelf display="Read" shelf= "read"/>
+          <Bookshelf display="Currently Reading "shelf="currentlyReading" books={this.props.books} updateBooks={this.props.updateBooks}/>
+          <Bookshelf display="Want to Read" shelf= "wantToRead" books={this.props.books} updateBooks={this.props.updateBooks}/>
+          <Bookshelf display="Read" shelf= "read" books={this.props.books} updateBooks={this.props.updateBooks}/>
         </div>
         <AddBook />
         </div>

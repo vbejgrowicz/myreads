@@ -6,25 +6,12 @@ import { getAll } from './BooksAPI';
 
 class Bookshelf extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      books:[]
-    };
-  }
-
-  componentDidMount() {
-  getAll().then((books) => {
-    this.setState({books});
-  });
-  }
-
   render() {
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.display}</h2>
         <div className="bookshelf-books">
-          <DisplayBook mode="bookshelf" displayBooks={this.state.books.filter(book => (book.shelf === this.props.shelf))} />
+          <DisplayBook mode="bookshelf" displayBooks={this.props.books.filter(book => (book.shelf === this.props.shelf))} updateBooks={this.props.updateBooks} />
         </div>
       </div>
     );

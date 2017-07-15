@@ -4,20 +4,26 @@ import React from 'react';
 import BookShelfChanger from './book-shelf-changer';
 
 class DisplayBook extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+    };
+  }
 
   checkShelf(book){
     if(this.props.mode === "search"){
       for(var i=0; i<(this.props.currentShelf.length); i++) {
-        if (this.props.currentShelf[i].id === book.id)
-          {
-          return(<BookShelfChanger book={book} shelf={this.props.currentShelf[i].shelf}/>);
-          }
+        if (this.props.currentShelf[i].id === book.id) {
+          return(<BookShelfChanger thisBook={book} shelf={this.props.currentShelf[i].shelf} updateBooks={this.props.updateBooks}/>);
         }
-      return(<BookShelfChanger book={book} shelf={"none"}/>);
       }
-    return(<BookShelfChanger book={book} shelf={book.shelf}/>);
-}
+      return(<BookShelfChanger thisBook={book} shelf={"none"} updateBooks={this.props.updateBooks}/>);
+    }
+    return(<BookShelfChanger thisBook={book} shelf={book.shelf} updateBooks={this.props.updateBooks}/>);
+  }
+
   render() {
+
     return (
       <ol className="books-grid">
       {this.props.displayBooks.map(book => {
@@ -29,10 +35,10 @@ class DisplayBook extends React.Component {
                 {this.checkShelf(book)}
               </div>
               <div className="book-title">{book.title || " "}</div>
-              <div className="book-authors">{book.authors && book.authors.map(author => {
+              <div className="book-authors">{book.authors && book.authors.map((author, idx) => {
                 return(
-                  <div>
-                  {author}
+                  <div key={idx}>
+                    {author}
                   </div>
                 );
               })}

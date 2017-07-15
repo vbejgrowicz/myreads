@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { update, getAll } from './BooksAPI';
+import BooksApp from './App';
 
 class BookShelfChanger extends React.Component {
   constructor() {
@@ -13,15 +14,18 @@ class BookShelfChanger extends React.Component {
 
   handleChange(e) {
     this.setState({value: e.target.value});
-    update(this.props.book, e.target.value);
+    update(this.props.thisBook, e.target.value).then(book => this.props.updateBooks(book));
 
   }
 
+
+
   render() {
+    
     return (
       <div className="book-shelf-changer">
         <select value={this.props.shelf} onChange={this.handleChange.bind(this)}>
-          <option value="none" disabled>Move to...</option>
+          <option value=" " disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>
           <option value="read">Read</option>

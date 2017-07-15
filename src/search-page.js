@@ -11,28 +11,24 @@ class SearchPage extends React.Component {
     super();
     this.state = {
       value:'',
-      books:[],
-      booksOnShelf: []
+      books:[]
     };
   }
 
   handleChange(e) {
     this.setState({value: e.target.value});
+    console.log(e.target.value);
     search(e.target.value, 20).then((books) => {
       this.setState({books});
+      console.log(books);
     });
-  }
-  componentDidMount() {
-  getAll().then((booksOnShelf) => {
-    this.setState({booksOnShelf});
-  });
   }
 
   checkArray() {
   if (Array.isArray(this.state.books)){
     return(
       <div className="search-books-results">
-        <DisplayBook mode="search" displayBooks={this.state.books} currentShelf={this.state.booksOnShelf}/>
+        <DisplayBook mode="search" displayBooks={this.state.books} currentShelf={this.props.books} updateBooks={this.props.updateBooks} />
       </div>
     );
   }
