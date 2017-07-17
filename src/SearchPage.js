@@ -20,6 +20,7 @@ class SearchPage extends React.Component {
     this.setState({query: e.target.value});
     search(e.target.value, maxResult).then((resultBooks) => {
       this.setState({resultBooks});
+
     });
   }
 
@@ -38,6 +39,16 @@ class SearchPage extends React.Component {
     this.setState({resultBooks:[]});
   }
 
+  ifQuery() {
+    if (this.state.query !== "") {
+      return(
+        <button type="button" className="clear-search" aria-label="Clear" onClick={this.clearQuery.bind(this)}>
+          <span className="glyphicon glyphicon-remove"></span>
+        </button>
+      );
+    }
+  }
+
   render() {
     return (
         <div className="search-books">
@@ -46,9 +57,7 @@ class SearchPage extends React.Component {
             <div className="search-books-input-wrapper">
               <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange.bind(this)}/>
             </div>
-            <button type="button" className="clear-search" aria-label="Clear" onClick={this.clearQuery.bind(this)}>
-              <span className="glyphicon glyphicon-remove"></span>
-            </button>
+            {this.ifQuery()}
           </div>
           {this.checkArray()}
         </div>
