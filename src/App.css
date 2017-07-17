@@ -75,14 +75,20 @@ body, .app {
 }
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  background: #fff;
 }
+
 .search-books-bar input {
   width: 100%;
   padding: 15px 10px;
   font-size: 1.25em;
   border: none;
   outline: none;
+}
+
+.clear-search {
+  background-color: #fff;
+  border-style: none;
 }
 
 .close-search {

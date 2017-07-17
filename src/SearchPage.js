@@ -33,6 +33,11 @@ class SearchPage extends React.Component {
     }
   }
 
+  clearQuery() {
+    this.setState({query:''});
+    this.setState({resultBooks:[]});
+  }
+
   render() {
     return (
         <div className="search-books">
@@ -41,6 +46,9 @@ class SearchPage extends React.Component {
             <div className="search-books-input-wrapper">
               <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange.bind(this)}/>
             </div>
+            <button type="button" className="clear-search" aria-label="Clear" onClick={this.clearQuery.bind(this)}>
+              <span className="glyphicon glyphicon-remove"></span>
+            </button>
           </div>
           {this.checkArray()}
         </div>
