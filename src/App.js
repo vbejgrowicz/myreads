@@ -4,8 +4,8 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 import { getAll } from './BooksAPI';
-import ListBooks from './list-books';
-import SearchPage from './search-page';
+import ListBooks from './ListBooks';
+import SearchPage from './SearchPage';
 
 class BooksApp extends React.Component {
 
@@ -26,22 +26,13 @@ class BooksApp extends React.Component {
   getAll().then((booksOnShelf) => {
     this.setState({booksOnShelf});
   });
-  // var shelfBook = this.state.booksOnShelf.find(newBook => newBook.id === book.id);
-  // if (shelfBook) {
-  //   var filteredBooks = this.state.booksOnShelf.filter(newBook => newBook.id !== book.id);
-  //   this.setState({booksOnShelf: filteredBooks.concat([book])});
-  // }
-  // else {
-  //   this.setState({booksOnShelf: this.state.booksOnShelf.concat([book])});
-  // }
   }
-
 
   render() {
     return (
       <div className="app">
-      <Route exact path='/search' render={() =>  <SearchPage books={this.state.booksOnShelf} updateBooks={this.updateBooks.bind(this)} />}/>
-      <Route exact path='/' render={() => <ListBooks books={this.state.booksOnShelf} updateBooks={this.updateBooks.bind(this)} />} />
+      <Route exact path='/search' render={() =>  <SearchPage booksOnShelf={this.state.booksOnShelf} updateBooks={this.updateBooks.bind(this)} />}/>
+      <Route exact path='/' render={() => <ListBooks booksOnShelf={this.state.booksOnShelf} updateBooks={this.updateBooks.bind(this)} />} />
       </div>
     );
   }

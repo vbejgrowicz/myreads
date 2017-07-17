@@ -1,8 +1,7 @@
 /* jshint esversion:6 */
 
 import React from 'react';
-import { update, getAll } from './BooksAPI';
-import BooksApp from './App';
+import { update } from './BooksAPI';
 
 class BookShelfChanger extends React.Component {
   constructor() {
@@ -14,14 +13,10 @@ class BookShelfChanger extends React.Component {
 
   handleChange(e) {
     this.setState({value: e.target.value});
-    update(this.props.thisBook, e.target.value).then(book => this.props.updateBooks(book));
-
+    update(this.props.book, e.target.value).then(book => this.props.updateBooks(book));
   }
 
-
-
   render() {
-    
     return (
       <div className="book-shelf-changer">
         <select value={this.props.shelf} onChange={this.handleChange.bind(this)}>
