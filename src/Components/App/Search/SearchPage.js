@@ -1,37 +1,25 @@
 /* jshint esversion:6 */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { search } from  './BooksAPI';
-import DisplayBook from './DisplayBook';
+import { search } from  '../../../API/BooksAPI';
+import SearchResults from './SearchResults';
 
 class SearchPage extends React.Component {
-
   constructor() {
     super();
     this.state = {
       query:'',
-      resultBooks:[]
+      isLoading: false
     };
   }
 
   handleChange(e) {
-    const maxResult = 20;
+    this.setState({isLoading: true});
     this.setState({query: e.target.value});
-    search(e.target.value, maxResult).then((resultBooks) => {
+    search(e.target.value, 20).then((resultBooks) => {
       this.setState({resultBooks});
-
+    this.setState({isLoading: false});
     });
-  }
-
-  checkArray() {
-    if (Array.isArray(this.state.resultBooks)){
-      return(
-        <div className="search-books-results">
-          <DisplayBook mode="search" books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
-        </div>
-      );
-    }
   }
 
   clearQuery() {
@@ -43,7 +31,7 @@ class SearchPage extends React.Component {
     if (this.state.query !== "") {
       return(
         <button type="button" className="clear-search" aria-label="Clear" onClick={this.clearQuery.bind(this)}>
-          <span className="glyphicon glyphicon-remove"></span>
+          <div className="glyphicon glyphicon-remove"></div>
         </button>
       );
     }
@@ -59,7 +47,7 @@ class SearchPage extends React.Component {
             </div>
             {this.ifQuery()}
           </div>
-          {this.checkArray()}
+          <SearchResults isLoading={this.state.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
         </div>
     );
   }

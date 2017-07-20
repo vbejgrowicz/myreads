@@ -54,7 +54,7 @@ body, .app {
   height: 50px;
   border-radius: 50%;
   background: #3569d5;
-  background-image: url('./icons/add.svg');
+  background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -87,8 +87,15 @@ body, .app {
 }
 
 .clear-search {
+  width: 50px;
+  height: 56px;
   background-color: #fff;
   border-style: none;
+}
+
+.glyphicon{
+  font-size: 22px;
+  color: #888888;
 }
 
 .close-search {
@@ -98,7 +105,7 @@ body, .app {
   width: 50px;
   height: 53px;
   background: white;
-  background-image: url('./icons/arrow-back.svg');
+  background-image: url('../icons/arrow-back.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
@@ -107,6 +114,7 @@ body, .app {
 
 .search-books-results {
   padding: 80px 10px 20px;
+  text-align: center;
 }
 
 /* books grid */
@@ -154,7 +162,7 @@ body, .app {
   height: 40px;
   border-radius: 50%;
   background: #7595d7;
-  background-image: url('./icons/arrow-drop-down.svg');
+  background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
@@ -179,4 +187,24 @@ body, .app {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* page spinner */
+.loading {
+  background-color: gray;
+  opacity: 0.5;
+}
+.spinner {
+  display: inline-flex;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid red;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg);}
 }
