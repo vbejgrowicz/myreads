@@ -18,9 +18,18 @@ class SearchPage extends React.Component {
     this.setState({query: e.target.value});
     search(e.target.value, 20).then((resultBooks) => {
       this.setState({resultBooks});
-    this.setState({isLoading: false});
+      this.setState({isLoading: false});
     });
   }
+
+  searchBooks() {
+    this.setState({isLoading: true});
+    search(this.state.query, 20).then((resultBooks) => {
+      this.setState({resultBooks});
+      this.setState({isLoading: false});
+    });
+  }
+
 
   clearQuery() {
     this.setState({query:''});
@@ -47,7 +56,7 @@ class SearchPage extends React.Component {
             </div>
             {this.ifQuery()}
           </div>
-          <SearchResults isLoading={this.state.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
+          <SearchResults isLoading={this.state.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} searchBooks={this.searchBooks.bind(this)} updateBooks={this.props.updateBooks}/>
         </div>
     );
   }

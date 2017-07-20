@@ -8,7 +8,7 @@ class DisplayBookTop extends React.Component {
     return (
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(' + (this.props.book.imageLinks && this.props.book.imageLinks.thumbnail) + ')' }}></div>
-        <CheckShelf book={this.props.book} mode={this.props.mode} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
+        <CheckShelf mode={this.props.mode} book={this.props.book} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} searchBooks={this.props.searchBooks} />
       </div>
     );
   }

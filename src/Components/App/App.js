@@ -20,14 +20,14 @@ class BooksApp extends React.Component {
     this.setState({isLoading: true});
     getAll().then((booksOnShelf) => {
       this.setState({ booksOnShelf });
-    this.setState({isLoading: false});
+      this.setState({isLoading: false});
     });
   }
 
   render() {
     return (
       <div className="app">
-        <Route exact path='/search' render={() =>  <SearchPage isLoading={this.state.isLoading} booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />}/>
+        <Route exact path='/search' render={() =>  <SearchPage booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
         <Route exact path='/' render={() => <ListShelves isLoading={this.state.isLoading} booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
       </div>
     );

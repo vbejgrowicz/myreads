@@ -87,14 +87,14 @@ body, .app {
 }
 
 .clear-search {
-  width: 50px;
+  width: 75px;
   height: 56px;
   background-color: #fff;
   border-style: none;
 }
 
 .glyphicon{
-  font-size: 22px;
+  font-size: 24px;
   color: #888888;
 }
 
