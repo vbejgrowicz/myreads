@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { search } from  '../../../API/BooksAPI';
 import SearchResults from './SearchResults';
+import ClearQueryButton from './ClearQueryButton';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -15,35 +16,19 @@ class SearchPage extends React.Component {
 
   handleChange(e) {
     this.setState({isLoading: true});
-    this.setState({query: e.target.value});
-    search(e.target.value, 20).then((resultBooks) => {
-      this.setState({resultBooks});
-      this.setState({isLoading: false});
-    });
+    this.setState({query: e.target.value},this.searchBooks);
   }
 
   searchBooks() {
-    this.setState({isLoading: true});
     search(this.state.query, 20).then((resultBooks) => {
       this.setState({resultBooks});
       this.setState({isLoading: false});
     });
   }
 
-
   clearQuery() {
     this.setState({query:''});
     this.setState({resultBooks:[]});
-  }
-
-  ifQuery() {
-    if (this.state.query !== "") {
-      return(
-        <button type="button" className="clear-search" aria-label="Clear" onClick={this.clearQuery.bind(this)}>
-          <div className="glyphicon glyphicon-remove"></div>
-        </button>
-      );
-    }
   }
 
   render() {
@@ -54,9 +39,9 @@ class SearchPage extends React.Component {
             <div className="search-books-input-wrapper">
               <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange.bind(this)}/>
             </div>
-            {this.ifQuery()}
+            <ClearQueryButton query={this.state.query} onClick={this.clearQuery.bind(this)}/>
           </div>
-          <SearchResults isLoading={this.state.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} searchBooks={this.searchBooks.bind(this)} updateBooks={this.props.updateBooks}/>
+          <SearchResults setLoadState={this.props.setLoadState} isLoading={this.state.isLoading || this.props.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
         </div>
     );
   }

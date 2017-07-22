@@ -8,10 +8,10 @@ class BookLoadingCheck extends React.Component {
     return this.props.isLoading ? (
       <div className="loading">
         <div className="spinner"></div>
-        <DisplayBook mode={this.props.mode} books={this.props.books} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} searchBooks={this.props.searchBooks} />
+        <DisplayBook isLoading={true} setLoadState={this.props.setLoadState} mode={this.props.mode} books={this.props.books} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
       </div>
     ):(<div className="not-loading">
-        <DisplayBook mode={this.props.mode} books={this.props.books} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} searchBooks={this.props.searchBooks} />
+        <DisplayBook isLoading={false} setLoadState={this.props.setLoadState} mode={this.props.mode} books={this.props.books} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
       </div>);
   }
 }

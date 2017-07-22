@@ -17,18 +17,21 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({isLoading: true});
     getAll().then((booksOnShelf) => {
       this.setState({ booksOnShelf });
       this.setState({isLoading: false});
     });
   }
 
+  setLoadState() {
+    this.setState({isLoading: true});
+  }
+
   render() {
     return (
       <div className="app">
-        <Route exact path='/search' render={() =>  <SearchPage booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
-        <Route exact path='/' render={() => <ListShelves isLoading={this.state.isLoading} booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
+        <Route exact path='/search' render={() =>  <SearchPage setLoadState={this.setLoadState.bind(this)} isLoading={this.state.isLoading} booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
+        <Route exact path='/' render={() => <ListShelves setLoadState={this.setLoadState.bind(this)} isLoading={this.state.isLoading} booksOnShelf={this.state.booksOnShelf} updateBooks={this.componentDidMount.bind(this)} />} />
       </div>
     );
   }

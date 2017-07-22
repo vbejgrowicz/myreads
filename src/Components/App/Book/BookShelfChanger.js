@@ -5,11 +5,9 @@ import { update } from '../../../API/BooksAPI';
 class BookShelfChanger extends React.Component {
 
   handleChange(e) {
+    this.props.setLoadState();
     update(this.props.book, e.target.value).then(book => {
       this.props.updateBooks();
-      if(this.props.mode === "search"){
-        return(this.props.searchBooks());
-      }
     });
   }
 

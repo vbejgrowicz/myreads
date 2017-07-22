@@ -12,9 +12,9 @@ class ListShelves extends React.Component {
       <div className="list-books">
         <Title />
         <div className="list-books-content">
-          <Bookshelf display="Currently Reading "shelf="currentlyReading" isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
-          <Bookshelf display="Want to Read" shelf="wantToRead" isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
-          <Bookshelf display="Read" shelf="read" isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
+          <Bookshelf display="Currently Reading "shelf="currentlyReading" setLoadState={this.props.setLoadState} isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
+          <Bookshelf display="Want to Read" shelf="wantToRead" setLoadState={this.props.setLoadState} isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
+          <Bookshelf display="Read" shelf="read" setLoadState={this.props.setLoadState} isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
         </div>
         <AddBook />
         </div>

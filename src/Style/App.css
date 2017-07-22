@@ -82,11 +82,6 @@ body, .app {
   background: #fff;
 }
 
-.search-books-bar input:hover {
-  background-color: #d5ecff;
-  opacity: 0.9;
-}
-
 .search-books-bar input {
   width: 100%;
   padding: 15px 10px;
@@ -218,12 +213,12 @@ button.clear-search:hover {
 }
 
 /* page spinner */
-.loading {
-  background-color: #e5e5e5;
-  opacity: 0.2;
-}
+
 .spinner {
-  display: inline-flex;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
   border: 10px solid darkgray;
   border-top: 10px solid #5584e6;
   border-radius: 50%;

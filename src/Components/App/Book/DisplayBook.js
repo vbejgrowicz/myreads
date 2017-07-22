@@ -10,9 +10,9 @@ class DisplayBook extends React.Component {
       <ol className="books-grid">
         {this.props.books.map((book, idx) => {
           return (
-            <li className="full-book" key={book.id + idx}>
+            <li className="full-book" key={book.id + idx} style={this.props.isLoading ? { opacity: '0.2' } : {}}>
               <div className="book">
-                <DisplayBookTop mode={this.props.mode} book={book} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} searchBooks={this.props.searchBooks} />
+                <DisplayBookTop setLoadState={this.props.setLoadState} mode={this.props.mode} book={book} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
                 <DisplayBookTitle book={book} />
                 <DisplayBookAuthors book={book} />
               </div>
