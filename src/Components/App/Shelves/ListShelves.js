@@ -18,7 +18,7 @@ class ListShelves extends React.Component {
           <Bookshelf display="Read" shelf="read" setLoadState={this.props.setLoadState} isLoading={this.props.isLoading} books={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
         </div>
         <AddBook />
-        </div>
+      </div>
     );
   }
 }

@@ -5,7 +5,7 @@ class DisplayBookTitle extends React.Component {
 
   render() {
     return (
-      <div className="book-title">{this.props.book.title || " "}</div>
+      <div className="book-title">{this.props.book.title || ' '}</div>
     );
   }
 }

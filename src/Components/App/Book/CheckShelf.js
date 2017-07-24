@@ -5,14 +5,12 @@ import BookShelfChanger from './BookShelfChanger';
 class CheckShelf extends React.Component {
 
   render() {
-    if(this.props.mode === "search"){
-      var bookOnShelf = this.props.booksOnShelf.find(i => i.id === this.props.book.id);
-      if (bookOnShelf) {
-        return(<BookShelfChanger setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={bookOnShelf.shelf} updateBooks={this.props.updateBooks} />);
-      }
-      return(<BookShelfChanger setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={"none"} updateBooks={this.props.updateBooks} />);
-    }
-    return(<BookShelfChanger setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={this.props.book.shelf} updateBooks={this.props.updateBooks}/>);
+    const bookOnShelf = this.props.booksOnShelf.find(i => i.id === this.props.book.id);
+    return bookOnShelf ? (
+      <BookShelfChanger isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={bookOnShelf.shelf} updateBooks={this.props.updateBooks} />
+    ):(
+      <BookShelfChanger isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={'none'} updateBooks={this.props.updateBooks} />
+    );
   }
 }
 

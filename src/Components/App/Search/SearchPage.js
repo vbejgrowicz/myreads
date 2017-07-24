@@ -42,7 +42,7 @@ class SearchPage extends React.Component {
             </div>
             <ClearQueryButton query={this.state.query} onClick={this.clearQuery.bind(this)}/>
           </div>
-          <LoadingCheck isLoading={this.state.isLoading} />
+          <LoadingCheck isLoading={this.state.isLoading || this.props.isLoading} />
           <SearchResults setLoadState={this.props.setLoadState} isLoading={this.state.isLoading || this.props.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
         </div>
     );

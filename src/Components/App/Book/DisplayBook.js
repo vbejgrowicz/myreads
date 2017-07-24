@@ -5,6 +5,7 @@ import DisplayBookTitle from './DisplayBookTitle';
 import DisplayBookAuthors from './DisplayBookAuthors';
 
 class DisplayBook extends React.Component {
+
   render() {
     return (
       <ol className="books-grid">
@@ -12,7 +13,7 @@ class DisplayBook extends React.Component {
           return (
             <li className="full-book" key={book.id + idx} style={this.props.isLoading ? { opacity: '0.2' } : {}}>
               <div className="book">
-                <DisplayBookTop setLoadState={this.props.setLoadState} mode={this.props.mode} book={book} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
+                <DisplayBookTop isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={book} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks} />
                 <DisplayBookTitle book={book} />
                 <DisplayBookAuthors book={book} />
               </div>
@@ -21,7 +22,7 @@ class DisplayBook extends React.Component {
         })}
       </ol>
     );
-    }
   }
+}
 
 export default DisplayBook;
