@@ -8,6 +8,10 @@ body, .app {
   background: white;
 }
 
+.app {
+  position: relative;
+}
+
 /* main page */
 
 .list-books-title {
@@ -215,10 +219,10 @@ button.clear-search:hover {
 /* page spinner */
 
 .spinner {
-  position: absolute;
+  position: fixed;
   z-index: 1;
-  top: 50%;
-  left: 50%;
+  top: 50vh;
+  left: 50vw;
   border: 10px solid darkgray;
   border-top: 10px solid #5584e6;
   border-radius: 50%;

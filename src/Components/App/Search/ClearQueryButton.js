@@ -8,7 +8,7 @@ class ClearQueryButton extends React.Component {
       <button type="button" className="clear-search" aria-label="Clear" onClick={this.props.onClick}>
         <div className="glyphicon glyphicon-remove"></div>
       </button>
-    ): null;
+    ) : null;
   }
 }
 

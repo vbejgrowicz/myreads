@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import '../../Style/App.css';
-
 import { getAll } from '../../API/BooksAPI';
 import ListShelves from './Shelves/ListShelves';
 import SearchPage from './Search/SearchPage';

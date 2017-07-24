@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { search } from  '../../../API/BooksAPI';
 import SearchResults from './SearchResults';
 import ClearQueryButton from './ClearQueryButton';
+import LoadingCheck from '../LoadingCheck';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -41,6 +42,7 @@ class SearchPage extends React.Component {
             </div>
             <ClearQueryButton query={this.state.query} onClick={this.clearQuery.bind(this)}/>
           </div>
+          <LoadingCheck isLoading={this.state.isLoading} />
           <SearchResults setLoadState={this.props.setLoadState} isLoading={this.state.isLoading || this.props.isLoading} books={this.state.resultBooks} booksOnShelf={this.props.booksOnShelf} updateBooks={this.props.updateBooks}/>
         </div>
     );
