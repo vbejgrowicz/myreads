@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { search } from  '../../../API/BooksAPI';
 import SearchResults from './SearchResults';
 import ClearQueryButton from './ClearQueryButton';
-import LoadingCheck from '../LoadingCheck';
+import LoadingCheck from '../Utilities/LoadingCheck';
 
 class SearchPage extends React.Component {
   constructor() {
@@ -16,20 +16,17 @@ class SearchPage extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({isLoading: true});
-    this.setState({query: e.target.value},this.searchBooks);
+    this.setState({isLoading: true, query: e.target.value}, this.searchBooks);
   }
 
   searchBooks() {
     search(this.state.query, 20).then((resultBooks) => {
-      this.setState({resultBooks});
-      this.setState({isLoading: false});
+      this.setState({resultBooks, isLoading: false});
     });
   }
 
   clearQuery() {
-    this.setState({query:''});
-    this.setState({resultBooks:[]});
+    this.setState({query: '', resultBooks: []});
   }
 
   render() {

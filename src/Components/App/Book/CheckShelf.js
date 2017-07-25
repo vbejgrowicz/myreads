@@ -6,10 +6,8 @@ class CheckShelf extends React.Component {
 
   render() {
     const bookOnShelf = this.props.booksOnShelf.find(i => i.id === this.props.book.id);
-    return bookOnShelf ? (
-      <BookShelfChanger isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={bookOnShelf.shelf} updateBooks={this.props.updateBooks} />
-    ):(
-      <BookShelfChanger isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={'none'} updateBooks={this.props.updateBooks} />
+    return (
+      <BookShelfChanger isLoading={this.props.isLoading} setLoadState={this.props.setLoadState} mode={this.props.mode} book={this.props.book} shelf={(bookOnShelf && bookOnShelf.shelf) || 'none'} updateBooks={this.props.updateBooks} />
     );
   }
 }
